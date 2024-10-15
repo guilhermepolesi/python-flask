@@ -1,8 +1,10 @@
 from flask import Flask, redirect, url_for, render_template, request, session, flash
+from test_blueprint import test_bp
 from datetime import timedelta
 from flask_sqlalchemy  import SQLAlchemy
 
 app = Flask(__name__)
+app.register_blueprint(test_bp, url_prefix="/admin")
 app.secret_key = "hello"
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.sqlite3'
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
